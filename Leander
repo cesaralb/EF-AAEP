@@ -1,0 +1,36 @@
+Algoritmo Cortedebarras_ProgramacionDinamica
+	
+	Definir n, i, j Como Entero
+	Definir ganancia_maxima Como Entero
+	Definir precios, dp Como Entero
+	
+	Escribir "=== CORTE DE BARRAS - PROGRAMACION DINAMICA ==="
+	Escribir "Ingrese la longitud de la barra:"
+	Leer n
+	
+	Dimension precios(n+1)
+	Dimension dp(n+1)
+	
+	Para i <- 1 Hasta n Hacer
+		Escribir "Ingrese el precio para longitud ", i, ":"
+		Leer precios(i)
+	FinPara
+	
+	dp(0) <- 0
+	
+	Para i <- 1 Hasta n Hacer
+		dp(i) <- 0
+		
+		Para j <- 1 Hasta i Hacer
+			Si precios(j) + dp(i-j) > dp(i) Entonces
+				dp(i) <- precios(j) + dp(i-j)
+			FinSi
+		FinPara
+	FinPara
+	
+	ganancia_maxima <- dp(n)
+	
+	Escribir ""
+	Escribir "Ganancia maxima usando Programacion Dinamica: ", ganancia_maxima
+	
+FinAlgoritmo
